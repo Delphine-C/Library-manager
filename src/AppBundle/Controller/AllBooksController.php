@@ -20,6 +20,6 @@ class AllBooksController extends Controller
     {
         $books =$this->getDoctrine()->getManager()->getRepository('AppBundle:Books')->findAll();
 
-        return $this->render('books/all_books.html.twig', ["books"=>$books]);
+        return $this->render('books/books.html.twig', ["books"=>$books]);
     }
 }

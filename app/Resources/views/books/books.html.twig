@@ -4,7 +4,8 @@
 
 {% block body %}
     <h1>Books</h1>
-
+    <p> <a href="{{ path("new_book") }}" class="button">Create New Book</a></p>
+    <p>Filters <a href="{{ path("all_books") }}">All</a> | <a href="overdue_books.html">Overdue</a> | <a href="checked_books.html">Checked Out</a></p>
     <table>
         <thead>
         <tr>

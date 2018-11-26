@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Book{% endblock %}
+
+{% block body %}
+    <h1>New Book</h1>
+    {{ form_start(form) }}
+
+    <p>{{ form_label(form.title) }}{{ form_widget(form.title) }}</p>
+    <p>{{ form_label(form.author) }}{{ form_widget(form.author) }}</p>
+    <p>{{ form_label(form.genre) }}{{ form_widget(form.genre) }}</p>
+    <p>{{ form_label(form.firstPublished) }}{{ form_widget(form.firstPublished) }}</p>
+
+    <p><input type="submit" value="Create New Book"></p>
+
+    {{ form_end(form) }}
+{% endblock %}

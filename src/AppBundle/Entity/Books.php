@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Books
@@ -25,6 +26,9 @@ class Books
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(max=255,maxMessage = "The title is longer than 255 characters.")
      */
     private $title;
 
@@ -32,6 +36,9 @@ class Books
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length( max=255,maxMessage = "The author is longer than 255 characters.")
      */
     private $author;
 
@@ -39,13 +46,17 @@ class Books
      * @var string
      *
      * @ORM\Column(name="genre", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(max=255,maxMessage = "The genre is longer than 255 characters.")
      */
     private $genre;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="first_published", type="integer")
+     * @ORM\Column(name="first_published", type="integer", nullable=true)
+     * @Assert\Type("integer",message="The year is not valid.")
      */
     private $firstPublished;
 
@@ -67,7 +78,8 @@ class Books
      */
     public function setTitle($title)
     {
-        $this->title = $title;}
+        $this->title = $title;
+    }
 
     /**
      * Get title

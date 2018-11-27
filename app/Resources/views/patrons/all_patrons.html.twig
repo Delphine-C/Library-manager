@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patrons{% endblock %}
+
+{% block body %}
+    <h1>Patrons</h1>
+    <p><a href="new_patron.html" class="button">Create New Patron</a></p>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Library ID</th>
+            <th>Zip</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for patron in patrons %}
+            <tr>
+                <td><a href="#">{{ patron.firstName }} {{ patron.lastName }}</a></td>
+                <td>{{ patron.address }}</td>
+                <td>{{ patron.email }}</td>
+                <td>{{ patron.libraryId }}</td>
+                <td>{{ patron.zipCode }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

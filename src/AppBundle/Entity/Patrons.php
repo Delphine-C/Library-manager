@@ -52,7 +52,7 @@ class Patrons
     /**
      * @var int
      *
-     * @ORM\Column(name="library_id", type="integer")
+     * @ORM\Column(name="library_id", type="string", length=255)
      */
     private $libraryId;
 

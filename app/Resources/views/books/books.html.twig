@@ -4,8 +4,9 @@
 
 {% block body %}
     <h1>Books</h1>
-    <p> <a href="{{ path("new_book") }}" class="button">Create New Book</a></p>
-    <p>Filters <a href="{{ path("all_books") }}">All</a> | <a href="overdue_books.html">Overdue</a> | <a href="checked_books.html">Checked Out</a></p>
+    <p><a href="{{ path("new_book") }}" class="button">Create New Book</a></p>
+    <p>Filters <a href="{{ path("all_books") }}">All</a> | <a href="overdue_books.html">Overdue</a> | <a
+                href="checked_books.html">Checked Out</a></p>
     <table>
         <thead>
         <tr>
@@ -18,7 +19,7 @@
         <tbody>
         {% for book in books %}
             <tr>
-                <td><a href="#">{{ book.title }}</a></td>
+                <td><a href="{{ path('book_detail', {'id': book.id }) }}">{{ book.title }}</a></td>
                 <td>{{ book.author }}</td>
                 <td>{{ book.genre }}</td>
                 <td>{{ book.firstPublished }}</td>

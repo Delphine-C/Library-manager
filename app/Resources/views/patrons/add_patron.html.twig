@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Patron{% endblock %}
+
+{% block body %}
+    <h1>New Patron</h1>
+    {{ form_start(form) }}
+
+    <p>{{ form_label(form.firstName) }}{{ form_widget(form.firstName) }}</p>
+    <p>{{ form_label(form.lastName) }}{{ form_widget(form.lastName) }}</p>
+    <p>{{ form_label(form.address) }}{{ form_widget(form.address) }}</p>
+    <p>{{ form_label(form.email) }}{{ form_widget(form.email) }}</p>
+    <p>{{ form_label(form.libraryId) }}{{ form_widget(form.libraryId) }}</p>
+    <p>{{ form_label(form.zipCode) }}{{ form_widget(form.zipCode) }}</p>
+
+    <p><input type="submit" value="Create New Patron"></p>
+
+    {{ form_end(form) }}
+{% endblock %}

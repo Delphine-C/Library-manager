@@ -25,6 +25,9 @@ class Patrons
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(max=255,maxMessage = "The firstname is longer than 255 characters.")
      */
     private $firstName;
 
@@ -32,6 +35,9 @@ class Patrons
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(max=255,maxMessage = "The lastname is longer than 255 characters.")
      */
     private $lastName;
 
@@ -39,6 +45,9 @@ class Patrons
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(max=255,maxMessage = "The adress is longer than 255 characters.")
      */
     private $address;
 
@@ -46,6 +55,8 @@ class Patrons
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Email(message="The email is not valid.")
      */
     private $email;
 
@@ -53,6 +64,9 @@ class Patrons
      * @var int
      *
      * @ORM\Column(name="library_id", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(max=255,maxMessage = "The library id is longer than 255 characters.")
      */
     private $libraryId;
 
@@ -60,6 +74,7 @@ class Patrons
      * @var int
      *
      * @ORM\Column(name="zip_code", type="integer")
+     * @Assert\Type("integer",message="The zip code is not valid.")
      */
     private $zipCode;
 

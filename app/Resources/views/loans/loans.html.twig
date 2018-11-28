@@ -28,7 +28,9 @@
                 <td>{% if loan.returnedOn is null %}
                     {% else %}{{ loan.returnedOn|date('Y-m-d') }}
                     {% endif %}</td>
-                <td><a href="{{ path('return_book', {'id': loan.id }) }}" class="button">Return Book</a></td>
+                <td>{% if loan.returnedOn is null %}
+                    <a href="{{ path('return_book', {'id': loan.id }) }}" class="button">Return Book</a>
+                    {% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>

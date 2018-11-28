@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Return Book{% endblock %}
+
+{% block body %}
+    <h1>Patron: Return Book</h1>
+    <p><strong>Book Title: </strong>{{ loan.book.title }}</p>
+    <p><strong>Loaned By: </strong>{{ loan.patron.firstName }} {{ loan.patron.lastName }}</p>
+    <p><strong>Loaned On: </strong>{{ loan.loanedOn|date('Y-m-d') }}</p>
+    <p><strong>Return By: </strong>{{ loan.returnBy|date('Y-m-d') }}</p>
+    {{ form_start(form) }}
+
+    <p><label for="returned_on">Returned on:</label>{{ form_widget(form.returnedOn) }}</p>
+
+    <p><input type="submit" value="Return Book"></p>
+
+    {{ form_end(form) }}
+{% endblock %}

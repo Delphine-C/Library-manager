@@ -18,7 +18,9 @@
         <tbody>
         {% for patron in patrons %}
             <tr>
-                <td><a href="#">{{ patron.firstName }} {{ patron.lastName }}</a></td>
+                <td>
+                    <a href="{{ path('patron_detail',{'id':patron.id}) }}">{{ patron.firstName }} {{ patron.lastName }}</a>
+                </td>
                 <td>{{ patron.address }}</td>
                 <td>{{ patron.email }}</td>
                 <td>{{ patron.libraryId }}</td>

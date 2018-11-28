@@ -4,15 +4,16 @@
 
 {% block body %}
     <h1>Loans</h1>
-    <p> <a href="#" class="button">Create New Loan</a></p>
-    <p>Filters <a href="{{ path('all_loans') }}">All</a> | <a href="overdue_loans.html">Overdue</a> | <a href="checked_loans.html">Checked Out</a></p>
+    <p><a href="#" class="button">Create New Loan</a></p>
+    <p>Filters <a href="{{ path('all_loans') }}">All</a> | <a href="overdue_loans.html">Overdue</a> | <a
+                href="checked_loans.html">Checked Out</a></p>
     <table>
         <thead>
         <tr>
             <th>Book</th>
-            <th>Patron </th>
+            <th>Patron</th>
             <th>Loaned on</th>
-            <th>Return by </th>
+            <th>Return by</th>
             <th>Returned on</th>
             <th>Action</th>
         </tr>
@@ -20,11 +21,13 @@
         <tbody>
         {% for loan in loans %}
             <tr>
-                <td><a href="book_detail.html">book</a></td>
-                <td><a href="patron_detail.html">patron</a></td>
-                <td>{{ loan.loanedOn }}</td>
-                <td>{{ loan.returnBy }}</td>
-                <td>{{ loan.returnedOn }}</td>
+                <td><a href="book_detail.html">{{ loan.book.title }}</a></td>
+                <td><a href="patron_detail.html">{{ loan.patron.firstName }} {{ loan.patron.lastName }}</a></td>
+                <td>{{ loan.loanedOn|date('Y-m-d') }}</td>
+                <td>{{ loan.returnBy|date('Y-m-d') }}</td>
+                <td>{% if loan.returnedOn is null %}
+                    {% else %}{{ loan.returnedOn|date('Y-m-d') }}
+                    {% endif %}</td>
                 <td><a href="return_book.html" class="button">Return Book</a></td>
             </tr>
         {% endfor %}

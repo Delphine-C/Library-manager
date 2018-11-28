@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Loan{% endblock %}
+
+{% block body %}
+    <h1>New Loan</h1>
+    {{ form_start(form) }}
+
+    <p>{{ form_label(form.book) }}{{ form_widget(form.book) }}</p>
+    <p>{{ form_label(form.patron) }}{{ form_widget(form.patron) }}</p>
+    <p>{{ form_label(form.loanedOn) }}{{ form_widget(form.loanedOn) }}</p>
+    <p>{{ form_label(form.returnBy) }}{{ form_widget(form.returnBy) }}</p>
+
+    <p><input type="submit" value="Create New Loan"></p>
+
+    {{ form_end(form) }}
+{% endblock %}

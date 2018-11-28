@@ -22,18 +22,14 @@ class Loans
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="book_id", type="integer")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Books", cascade={"persist"})
      */
-    private $bookId;
+    private $book;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="patron_id", type="integer")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Patrons", cascade={"persist"})
      */
-    private $patronId;
+    private $patron;
 
     /**
      * @var \DateTime
@@ -52,10 +48,15 @@ class Loans
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="returned_on", type="date")
+     * @ORM\Column(name="returned_on", type="date", nullable=true)
      */
     private $returnedOn;
 
+    public function __construct()
+    {
+        $this->loanedOn = new \DateTime();
+        $this->returnBy = new \DateTime('+7 days');
+    }
 
     /**
      * Get id
@@ -68,43 +69,43 @@ class Loans
     }
 
     /**
-     * Set bookId
+     * Set book
      *
-     * @param integer $bookId
+     * @param integer $book
      */
-    public function setBookId($bookId)
+    public function setBook($book)
     {
-        $this->bookId = $bookId;
+        $this->book = $book;
     }
 
     /**
-     * Get bookId
+     * Get book
      *
      * @return int
      */
-    public function getBookId()
+    public function getBook()
     {
-        return $this->bookId;
+        return $this->book;
     }
 
     /**
-     * Set patronId
+     * Set patron
      *
-     * @param integer $patronId
+     * @param integer $patron
      */
-    public function setPatronId($patronId)
+    public function setPatron($patron)
     {
-        $this->patronId = $patronId;
+        $this->patron = $patron;
     }
 
     /**
-     * Get patronId
+     * Get patron
      *
      * @return int
      */
-    public function getPatronId()
+    public function getPatron()
     {
-        return $this->patronId;
+        return $this->patron;
     }
 
     /**

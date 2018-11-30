@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AllBooksController extends Controller
 {
-    /**s
+    /**
      * @Route("/all-books", name="all_books")
      */
     public function getBooksAction()

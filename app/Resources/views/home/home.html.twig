@@ -12,7 +12,7 @@
                 <li><a href="{{ path("new_book") }}">New Book</a></li>
                 <li><a href="{{ path("all_books") }}">List All</a></li>
                 <li><a href="/books?filter=overdue">List Overdue</a></li>
-                <li><a href="/books?filter=checked_out">List Checked Out</a></li>
+                <li><a href="{{ path('books_checked') }}">List Checked Out</a></li>
             </ul>
         </li>
         <li>Patrons
@@ -25,8 +25,8 @@
             <ul>
                 <li><a href="{{ path("new_loan") }}">New Loan</a></li>
                 <li><a href="{{ path("all_loans") }}">List All</a></li>
-                <li><a href="overdue_loans.html">List Overdue</a></li>
-                <li><a href="checked_loans.html">List Checked Out</a></li>
+                <li><a href="{{ path('loan_overdue') }}">List Overdue</a></li>
+                <li><a href="{{ path('loan_checked') }}">List Checked Out</a></li>
             </ul>
         </li>
     </ul>

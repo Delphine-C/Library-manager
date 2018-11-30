@@ -20,6 +20,9 @@ class AllLoansController extends Controller
     {
         $loans = $this->getDoctrine()->getManager()->getRepository('AppBundle:Loans')->findAll();
 
-        return $this->render('loans/loans.html.twig', ["loans" => $loans]);
+        return $this->render('loans/loans.html.twig', [
+            "loans" => $loans,
+            "title" => "Loans"
+        ]);
     }
 }

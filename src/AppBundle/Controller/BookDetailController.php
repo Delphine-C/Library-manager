@@ -13,17 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Form\BooksType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use AppBundle\Service\LoanHistory;
 
 class BookDetailController extends Controller
 {
     /**
      * @Route("/book-detail/{id}", name="book_detail")
      */
-    public function getBookDetailAction(Request $request, $id)
+    public function getBookDetailAction(Request $request, $id, LoanHistory $loanHistory)
     {
         $book = $this->getDoctrine()->getManager()->getRepository('AppBundle:Books')->find($id);
 
-        if(\is_null($book)){
+        if (\is_null($book)) {
             throw new NotFoundHttpException(sprintf("This reference doesn't exist.", $id));
         }
 
@@ -37,9 +38,12 @@ class BookDetailController extends Controller
             return $this->redirect($request->getUri());
         }
 
+        $history = $loanHistory->bookHistory($id);
+
         return $this->render('books/book_detail.html.twig', [
             "form" => $form->createView(),
-            "book" => $book
+            "book" => $book,
+            "history" => $history
         ]);
     }
 }

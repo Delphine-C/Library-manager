@@ -27,7 +27,20 @@
         </tr>
         </thead>
         <tbody>
-
+        {% for loan in history %}
+            <tr>
+                <td><a href="{{ path('book_detail', {'id': loan.book.id }) }}">{{ loan.book.title }}</a></td>
+                <td><a href="{{ path('patron_detail', {'id': loan.patron.id }) }}">{{ loan.patron.firstName }} {{ loan.patron.lastName }}</a></td>
+                <td>{{ loan.loanedOn|date('Y-m-d') }}</td>
+                <td>{{ loan.returnBy|date('Y-m-d') }}</td>
+                <td>{% if loan.returnedOn is null %}
+                    {% else %}{{ loan.returnedOn|date('Y-m-d') }}
+                    {% endif %}</td>
+                <td>{% if loan.returnedOn is null %}
+                        <a href="{{ path('return_book', {'id': loan.id }) }}" class="button">Return Book</a>
+                    {% endif %}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 

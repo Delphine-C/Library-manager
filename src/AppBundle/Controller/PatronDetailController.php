@@ -13,17 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Form\PatronsType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use AppBundle\Service\LoanHistory;
 
 class PatronDetailController extends Controller
 {
     /**
      * @Route("/patron-detail/{id}", name="patron_detail")
      */
-    public function getPatronDetailAction(Request $request, $id)
+    public function getPatronDetailAction(Request $request, $id, LoanHistory $loanHistory)
     {
         $patron = $this->getDoctrine()->getManager()->getRepository('AppBundle:Patrons')->find($id);
 
-        if(\is_null($patron)){
+        if (\is_null($patron)) {
             throw new NotFoundHttpException(sprintf("This reference doesn't exist.", $id));
         }
 
@@ -37,9 +38,12 @@ class PatronDetailController extends Controller
             return $this->redirect($request->getUri());
         }
 
+        $history = $loanHistory->patronHistory($id);
+
         return $this->render('patrons/patron_detail.html.twig', [
             "form" => $form->createView(),
-            "patron" => $patron
+            "patron" => $patron,
+            "history" => $history
         ]);
     }
 }

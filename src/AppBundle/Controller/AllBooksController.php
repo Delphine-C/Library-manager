@@ -13,13 +13,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AllBooksController extends Controller
 {
-    /**
+    /**s
      * @Route("/all-books", name="all_books")
      */
     public function getBooksAction()
     {
-        $books =$this->getDoctrine()->getManager()->getRepository('AppBundle:Books')->findAll();
+        $books = $this->getDoctrine()->getManager()->getRepository('AppBundle:Books')->findAll();
 
-        return $this->render('books/books.html.twig', ["books"=>$books]);
+        return $this->render('books/books.html.twig', [
+            "books" => $books,
+            "title" => "Books"
+        ]);
     }
 }

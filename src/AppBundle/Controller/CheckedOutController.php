@@ -17,11 +17,25 @@ class CheckedOutController extends Controller
     /**
      * @Route("/checked-loans", name="loan_checked")
      */
-    public function getCheckedOutAction(CheckedOutBooks $checkedOutBooks)
+    public function getCheckedOutLoansAction(CheckedOutBooks $checkedOutBooks)
     {
         $loans = $checkedOutBooks->getCheckedOutBooks();
 
         return $this->render('loans/loans.html.twig', [
+            "loans" => $loans,
+            "title" => "Checked Out Books"
+        ]);
+
+    }
+
+    /**
+     * @Route("/checked-books", name="books_checked")
+     */
+    public function getCheckedOutBooksAction(CheckedOutBooks $checkedOutBooks)
+    {
+        $loans = $checkedOutBooks->getCheckedOutBooks();
+
+        return $this->render('books/books.html.twig', [
             "loans" => $loans,
             "title" => "Checked Out Books"
         ]);

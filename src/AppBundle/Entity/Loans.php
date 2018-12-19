@@ -27,7 +27,8 @@ class Loans
     private $book;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Patrons", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Patrons")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $patron;
 
